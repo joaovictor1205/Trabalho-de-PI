@@ -60,3 +60,8 @@ li{
 
     border-bottom: 3px solid #8600FF;
   }
+
+  a{
+      text-decoration: none;
+      color:black;
+  }
