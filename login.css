@@ -1,0 +1,33 @@
+form{
+    margin: 0 auto;
+    width: 50%;
+
+    padding: 100px;
+
+    border: 1px solid black;
+
+    overflow: auto;
+
+}
+
+h1{
+    margin: 0 auto;
+    margin-top: 70px;
+
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    background-color: #05B0F4;
+
+}
+
+#entrar{
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+}
+
+#botao{
+    text-align: right;
+}
