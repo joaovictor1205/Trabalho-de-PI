@@ -9,7 +9,7 @@
     
     left: 0;
     right: 0;
-    top: 0;
+    top: 13%;
     bottom: 0;
 
     overflow: auto;
@@ -37,7 +37,26 @@ p{
 li{
     display: inline-block;
 
-    font-family: 'Roboto';
-    font-size: 2em;
-    
+    padding-left: 5%;
+    padding-right: 5%;
+       
 }
+
+#header {
+
+    background-color: #0495CE;
+
+    font-family: 'Roboto';
+    font-size: 1em; 
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    text-align: center;
+
+    padding: 17px;
+
+    border-bottom: 3px solid #8600FF;
+  }
