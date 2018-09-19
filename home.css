@@ -33,8 +33,8 @@ p{
 li{
     display: inline-block;
 
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 3.5%;
+    padding-right: 3.5%;
        
 }
 
@@ -73,5 +73,10 @@ a{
     top:5px;
     margin: 0 auto;
     width: 100px;
+    color: #C40000;
+}
+
+#botaoEntrar{
     color: black;
+    font-weight: 100;
 }
