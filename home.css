@@ -44,7 +44,7 @@ li{
 
 #header {
 
-    background-color: #0495CE;
+    background-color: #05B0F4;
     color: black;
 
     font-family: 'Roboto';
@@ -60,7 +60,7 @@ li{
     padding: 20px;
     padding-bottom: 20px;
 
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid #025474;
   }
 
 a{
@@ -73,15 +73,16 @@ a{
     top:5px;
     margin: 0 auto;
     width: 100px;
-    color: #C40000;
+    color: #F61E47;
 }
 
 #botaoEntrar{
     color: black;
     font-weight: 100;
+    background-color: white;
 }
 
 #icone{
     padding: 10px;
-    color: black;
+    color: #025474;
 }
