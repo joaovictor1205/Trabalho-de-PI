@@ -9,7 +9,7 @@
     
     left: 0;
     right: 0;
-    top: 13%;
+    top: 111px;
     bottom: 0;
 
     overflow: auto;
@@ -19,10 +19,6 @@
 
 }
 
-#titulo{
-    border-bottom: 0.01em solid black;
-    font-size: 2.5em;
-}
 
 h1, h2, h3{
     font-family: 'Roboto';
@@ -42,9 +38,14 @@ li{
        
 }
 
+#titulo{
+    font-size: 35px;
+}
+
 #header {
 
     background-color: #0495CE;
+    color: black;
 
     font-family: 'Roboto';
     font-size: 1em; 
@@ -56,12 +57,21 @@ li{
 
     text-align: center;
 
-    padding: 17px;
+    padding: 20px;
+    padding-bottom: 20px;
 
-    border-bottom: 3px solid #8600FF;
+    border-bottom: 3px solid black;
   }
 
 a{
       text-decoration: none;
-      color:black;
+      color:white;
+}
+
+#logo{
+    padding: 10px;
+    top:5px;
+    margin: 0 auto;
+    width: 100px;
+    color: black;
 }
