@@ -20,12 +20,16 @@ h1{
 
     background-color: #05B0F4;
 
+    font-family: 'Roboto';
+    font-size: 50px;
 }
 
 #entrar{
     margin: 0 auto;
     width: 50%;
     text-align: center;
+
+    border-bottom: 3px solid #025474;
 }
 
 #botao{
