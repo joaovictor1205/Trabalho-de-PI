@@ -1,0 +1,16 @@
+label{
+    display: block;
+    margin-left: 15px;
+}
+
+.caixa {
+    top: 20%;
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.caixa h1 {
+    text-align: left;
+    margin-left: 15px;
+}
