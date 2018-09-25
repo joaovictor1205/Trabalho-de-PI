@@ -1,0 +1,34 @@
+label{
+    display: block;
+    margin-left: 15px;
+}
+
+.caixa {
+    top: 20%;
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.caixa h1 {
+    text-align: left;
+    margin-left: 15px;
+}
+
+.form-check-label{
+    margin-left: 0;
+}
+
+
+#sugestao, #elogio, #duvida{
+    margin-left: 10px;
+}
+
+#enviar{
+    margin-top: 10px;
+    margin-left: 55%;
+}
+
+#voltar{
+    margin-top: 10px;
+}
