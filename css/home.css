@@ -9,7 +9,7 @@
     
     left: 0;
     right: 0;
-    top: 111px;
+    top: 116px;
     bottom: 0;
 
     overflow: auto;
@@ -78,7 +78,6 @@ a{
 
 #botaoEntrar{
     color: black;
-    font-weight: 100;
     background-color: white;
 }
 
