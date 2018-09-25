@@ -14,3 +14,12 @@ label{
     text-align: left;
     margin-left: 15px;
 }
+
+.form-check-label{
+    margin-left: 0;
+}
+
+
+#sugestao, #elogio, #duvida{
+    margin-left: 10px;
+}
