@@ -23,3 +23,12 @@ label{
 #sugestao, #elogio, #duvida{
     margin-left: 10px;
 }
+
+#enviar{
+    margin-top: 10px;
+    margin-left: 55%;
+}
+
+#voltar{
+    margin-top: 10px;
+}
