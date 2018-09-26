@@ -1,0 +1,68 @@
+#home_page{
+    background-image: url('../img/clinicaPrivado.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    color: black;
+
+    position: absolute;
+    
+    left: 0;
+    right: 0;
+    top: 0;
+
+    bottom: 0;
+
+    overflow: auto;
+    text-align: left;
+
+    padding: 1.5em;  
+
+}
+
+#voltar{
+    margin-top: 7.5px;
+}
+
+label{
+    display: block;
+    margin-left: 10px;
+    font-size:12pt;
+    font-family: 'Raleway';
+}
+
+#sexo{
+    margin-left:-5px;
+}
+
+#masculino{
+    margin-left: 15px;
+}
+
+h1{
+    font-size: 17pt;
+    font-family: 'Roboto';
+    font-weight: 700;
+}
+
+h2{
+    font-family: 'Raleway';
+    font-size: 15pt;
+    text-align: center;
+    font-weight: 700;
+}
+
+#especialidade{
+    display: none;
+}
+
+fieldset{
+    border: 1px solid #025474;
+    border-radius: 1px;
+
+    padding: 10px;
+}
+
+#cadastrar{
+    margin-top:8px;
+}
