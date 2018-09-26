@@ -1,0 +1,115 @@
+<!DOCTYPE <!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Clínica - Funcionários</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="#">
+</head>
+
+<body>
+
+    <div class="modal fade" id="abrirModal" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLongTitle">Entrar</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <label for="email">Usuário:</label>
+                        <input type="email" class="form-control" id="email" name="email">
+
+                        <br>
+
+                        <label for="pwd">Senha:</label>
+                        <input type="password" class="form-control" id="pwd" name="pwd">
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-success">Entrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div id="funcionario">
+        <div class="container">
+            <nav id="header" class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Nossa Clínica</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="galeria.html">Galeria</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="agendamento.html">Agendamento</a></li>
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#abrirModal" id="botaoModal">Entrar</button>
+                    </ul>
+                </div>
+            </nav>
+
+        <h1> Funcionários cadastrados </h1>
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sexo</th>
+                        <th>Cargo</th>
+                        <th>RG</th>
+                        <th>Logradouro</th>
+                        <th>Bairro</th>
+                        <th>Cidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Matheus F.</td>
+                        <td>Masculino</td>
+                        <td>Neurologista</td>
+                        <td>MG-666.234-12</td>
+                        <td>Rua Izau Rangel de Mendonça</td>
+                        <td>Santa Mônica</td>
+                        <td>Uberlândia</td>
+                    </tr>
+                    <tr>
+                        <td>João P.</td>
+                        <td>Masculino</td>
+                        <td>Neurologista</td>
+                        <td>MG-216.644-32</td>
+                        <td>Rua Marzagão</td>
+                        <td>Tibery</td>
+                        <td>Uberlândia</td>
+                    </tr>
+                    <tr>
+                        <td>Ana Elisa</td>
+                        <td>Feminino</td>
+                        <td>Cardiologista</td>
+                        <td>MG-126.639-11</td>
+                        <td>Rua da Plata</td>
+                        <td>Tibery</td>
+                        <td>Uberlândia</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
