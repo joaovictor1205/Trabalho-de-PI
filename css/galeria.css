@@ -48,9 +48,11 @@ h1{
 }
 
 #galeria{
-
+    background-image: url('../img/clínica.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
+
+
 
     color: black;
 

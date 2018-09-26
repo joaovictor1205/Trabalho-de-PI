@@ -20,51 +20,65 @@
 
 <body>
 
-    <div class="caixa">
-
-        <h1>Envie sua Mensagem</h1>
-
-        <div class="container">
-
-            <form class="form">
-                <div class="form-group row">
-                    <label for="nome">Nome:</label>
-                    <div class="col-sm-4">
-                        <input class="form-control" type="text" id="nome" name="nome">
-                    </div>
+<div id="contato">
+    <div class="container">
+        <nav id="header" class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Nossa Clínica</a>
                 </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li class="active"><a href="contato.html">Contato</a></li>
+                    <li><a href="agendamento.html">Agendamento</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="caixa">
 
-                <div class="form-group row">
-                    <label for="email">Email:</label>
-                    <div class="col-sm-4">
-                        <input class="form-control" type="email" id="email" name="email">
+            <h1>Envie sua Mensagem</h1>
+
+                <form class="form">
+                    <div class="form-group row">
+                        <label for="nome">Nome:</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" id="nome" name="nome">
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group row">
-                    <label for="msg">Mensagem:</label>
-                    <div class="col-sm-8">
-                        <textarea class="form-control" id="msg" name="msg"></textarea>
+                    <div class="form-group row">
+                        <label for="email">Email:</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="email" id="email" name="email">
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-check">
-                    <label class="form-check-label" for="motivo">Motivo:</label>
-                    <div>
-                        <input class="form-check-input" type="radio" id="reclamacao" name="motivo">Reclamação
-                        <input class="form-check-input" type="radio" id="sugestao" name="motivo">Sugestão
-                        <input class="form-check-input" type="radio" id="elogio" name="motivo">Elogio
-                        <input class="form-check-input" type="radio" id="duvida" name="motivo">Dúvida
+                    <div class="form-group row">
+                        <label for="msg">Mensagem:</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" id="msg" name="msg"></textarea>
+                        </div>
                     </div>
-                </div>
 
-                <input type="submit" name="enviar" value="Enviar" id="enviar" class="btn btn-success">
-                <a href="home.html"><button type="button" name="voltar" id="voltar" class="btn btn-danger">Voltar</button></a>
+                    <div class="form-check">
+                        <label class="form-check-label" for="motivo">Motivo:</label>
+                        <div>
+                            <input class="form-check-input" type="radio" id="reclamacao" name="motivo">Reclamação
+                            <input class="form-check-input" type="radio" id="sugestao" name="motivo">Sugestão
+                            <input class="form-check-input" type="radio" id="elogio" name="motivo">Elogio
+                            <input class="form-check-input" type="radio" id="duvida" name="motivo">Dúvida
+                        </div>
+                    </div>
 
-            </form>
+                    <input type="submit" name="enviar" value="Enviar" id="enviar" class="btn btn-success">
+                    <a href="home.html"><button type="button" name="voltar" id="voltar" class="btn btn-danger">Voltar</button></a>
+
+                </form>
         </div>
     </div>
-
+</div>
 
 </body>
 
