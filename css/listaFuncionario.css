@@ -1,0 +1,24 @@
+#funcionario {
+    background-image: url('../img/clinicaPrivado.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    color: black;
+
+    position: absolute;
+    
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    overflow: auto;
+    text-align: left;
+
+    padding: 1.5em;  
+
+}
+
+#voltar{
+    margin-top: 7.5px;
+}
