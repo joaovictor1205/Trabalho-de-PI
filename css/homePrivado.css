@@ -1,0 +1,71 @@
+#home_page{
+    background-image: url('../img/clinicaPrivado.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    color: black;
+
+    position: absolute;
+    
+    left: 0;
+    right: 0;
+    top: 0;
+
+    bottom: 0;
+
+    overflow: auto;
+    text-align: left;
+
+    padding: 1.5em;  
+
+}
+
+
+h1, h2, h3{
+    font-family: 'Roboto';
+    font-weight: 200;
+}
+
+p{
+    font-family: 'Raleway';
+    font-size: 1.2em;
+}
+
+
+#titulo{
+    font-size: 35px;
+}
+
+a{
+      text-decoration: none;
+      color:white;
+}
+
+
+#botaoEntrar{
+    color: black;
+    background-color: white;
+}
+
+
+.footer {
+    position: fixed;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    margin: 0 auto;
+    height: 20px;
+
+    background-color: #025474;
+    color: white;
+    text-align: center;
+
+    font-family: 'Roboto';
+    font-size: 8pt;
+}
+
+#voltar{
+    margin-top: 7.5px;
+}
