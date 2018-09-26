@@ -1,0 +1,41 @@
+#agendamento{
+    background-image: url('../img/clínica.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    color: black;
+
+    position: absolute;
+    
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    overflow: auto;
+    text-align: left;
+
+    padding: 1.5em;  
+
+}
+
+label{
+    display: block;
+    margin-left: 15px;
+}
+
+.caixa {
+    top: 20%;
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.caixa h1 {
+    text-align: left;
+    margin-left: 15px;
+}
+
+.form-check-label{
+    margin-left: 0;
+}

@@ -9,7 +9,7 @@
     
     left: 0;
     right: 0;
-    top: 111px;
+    top: 0;
     bottom: 0;
 
     overflow: auto;
@@ -30,19 +30,19 @@ p{
     font-size: 1.2em;
 }
 
-li{
+/*li{
     display: inline-block;
 
     padding-left: 2%;
     padding-right: 2%;
        
-}
+}*/
 
 #titulo{
     font-size: 35px;
 }
 
-#header {
+/*#header {
 
     background-color: #05B0F4;
     color: black;
@@ -61,7 +61,7 @@ li{
     padding-bottom: 20px;
 
     border-bottom: 3px solid #025474;
-  }
+  }*/
 
 a{
       text-decoration: none;
