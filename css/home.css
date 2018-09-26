@@ -31,38 +31,11 @@ p{
     font-size: 1.2em;
 }
 
-/*li{
-    display: inline-block;
-
-    padding-left: 2%;
-    padding-right: 2%;
-       
-}*/
 
 #titulo{
     font-size: 35px;
 }
 
-/*#header {
-
-    background-color: #05B0F4;
-    color: black;
-
-    font-family: 'Roboto';
-    font-size: 1em; 
-
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-
-    text-align: center;
-
-    padding: 20px;
-    padding-bottom: 20px;
-
-    border-bottom: 3px solid #025474;
-  }*/
 
 a{
     text-decoration: none;
