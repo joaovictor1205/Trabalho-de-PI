@@ -1,16 +1,12 @@
 <?php
 
-// Inclui o arquivo com os dados e funções de conexão
-require "conexaoMysql.php";
+require "conexaoBanco.php";
 
-// Valida uma string removendo alguns caracteres
-// especiais que poderiam ser provenientes
-// de ataques do tipo HTML/CSS/JavaScript Injection
 function filtraEntrada($dado) 
 {
-	$dado = trim($dado);               // remove espaços no inicio e no final da string
-	$dado = stripslashes($dado);       // remove contra barras: "cobra d\'agua" vira "cobra d'agua"
-	$dado = htmlspecialchars($dado);   // caracteres especiais do HTML (como < e >) são codificados
+	$dado = trim($dado);
+	$dado = stripslashes($dado);
+	$dado = htmlspecialchars($dado);
 
 	return $dado;
 }
@@ -19,22 +15,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	$msgErro = "";
 
-	// Define e inicializa as variáveis
-	$nome = $email = $estadoCivil = $diaNascimento = "";
+	$nome = $data = $sexo = $estadoCivil = $cargo = $especialidade = "";
 
 	$nome             = filtraEntrada($_POST["nome"]);     
-	$email            = filtraEntrada($_POST["email"]);
-	$estadoCivil      = filtraEntrada($_POST["estadoCivil"]);
-	$diaNascimento    = filtraEntrada($_POST["diaNascimento"]);
+	$data             = filtraEntrada($_POST["data"]);
+	$sexo             = filtraEntrada($_POST["sexo"]);
+    $estadoCivil      = filtraEntrada($_POST["estadoCivil"]);
+    $cargo            = filtraEntrada($_POST["cargo"]);
+    $especialidade    = filtraEntrada($_POST["especialidade"]);
 
 	try
 	{    
-		// Função definida no arquivo conexaoMysql.php
 		$conn = conectaAoMySQL();
 
 		$sql = "
-		  INSERT INTO Cliente (Id, Nome, Email, EstadoCivil, DiaNascimento)
-		  VALUES (null, '$nome', '$email', '$estadoCivil', $diaNascimento);
+		  INSERT INTO Funcionario (id, nome, data, sexo, estadoCivil, cargo, especialidade)
+		  VALUES (null, '$nome', $data, '$sexo', '$estadoCivil', '$cargo', '$especialidade');
 		";
 
 		if (! $conn->query($sql))
@@ -49,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 ?>
 
 
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -96,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
             <h2>Dados Pessoais</h2>
 
-                <form class="form" name="formulario"  onSubmit="return validaData()">
+                <form class="form" name="formulario" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" onSubmit="return validaData()">
 
                     <fieldset>
 
@@ -279,6 +275,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
                 </form>
         </div>
+
+        <?php 
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {  
+                if ($msgErro == "")
+                    echo "<h3 class='text-success'>Dados armazenados com sucesso!</h3>";
+                else
+                    echo "<h3 class='text-danger'>Cadastro não realizado: $msgErro</h3>";
+            }
+        ?>
 
     </div>
 
