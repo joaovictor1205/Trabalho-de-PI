@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	$msgErro = "";
 
-	$nome = $data = $sexo = $estadoCivil = $cargo = $especialidade = "";
+	$nome = $data = $sexo = $estadoCivil = $cargo = $especialidade = $cpf = $rg = $outro = "";
 
 	$nome             = filtraEntrada($_POST["nome"]);     
 	$data             = filtraEntrada($_POST["data"]);
@@ -23,14 +23,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $estadoCivil      = filtraEntrada($_POST["estadoCivil"]);
     $cargo            = filtraEntrada($_POST["cargo"]);
     $especialidade    = filtraEntrada($_POST["especialidade"]);
+    $cpf              = filtraEntrada($_POST["cpf"]);
+    $rg               = filtraEntrada($_POST["rg"]);
+    $outro            = filtraEntrada($_POST["outro"]);
 
 	try
 	{    
 		$conn = conectaAoMySQL();
 
 		$sql = "
-		  INSERT INTO Funcionario (id, nome, data, sexo, estadoCivil, cargo, especialidade)
-		  VALUES (null, '$nome', $data, '$sexo', '$estadoCivil', '$cargo', '$especialidade');
+		  INSERT INTO Funcionario (id, nome, dataNascimento, sexo, estadoCivil, cargo, especialidade, cpf, rg, outro)
+		  VALUES (null, '$nome', $data, '$sexo', '$estadoCivil', '$cargo', '$especialidade', $cpf, $rg, '$outro')
+		";
+
+		if (! $conn->query($sql))
+		  throw new Exception("Falha na inserção dos dados: " . $conn->error);
+	}
+	catch (Exception $e)
+	{
+		$msgErro = $e->getMessage();
+	}
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+{
+	$msgErro = "";
+
+	$cep = $tipoLogradouro = $logradouro = $numero = $complemento = $bairro = $cidade = $estado = "";
+
+	$cep              = filtraEntrada($_POST["cep"]);     
+	$tipoLogradouro   = filtraEntrada($_POST["tipoLogradouro"]);
+	$logradouro       = filtraEntrada($_POST["logradouro"]);
+    $numero           = filtraEntrada($_POST["numero"]);
+    $complemento      = filtraEntrada($_POST["complemento"]);
+    $bairro           = filtraEntrada($_POST["bairro"]);
+    $cidade           = filtraEntrada($_POST["cidade"]);
+    $estado           = filtraEntrada($_POST["estado"]);
+
+	try
+	{    
+		$conn = conectaAoMySQL();
+
+		$sql = "
+		  INSERT INTO EnderecoFunc (id, cep, tipoLogradouro, logradouro, numero, complemento, bairro, cidade, estado)
+		  VALUES (null, $cep, '$tipoLogradouro', '$logradouro', $numero, '$complemento', '$bairro', '$cidade', '$estado')
 		";
 
 		if (! $conn->query($sql))
@@ -76,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                     <a class="navbar-brand" href="homePrivado.html">Área Restrita</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="cadastroFuncionario.html">Novo Funcionário</a></li>
+                    <li class="active"><a href="cadastroFuncionario.php">Novo Funcionário</a></li>
                     <li><a href="listaFuncionario.html">Listar Funcionários</a></li>
                     <li><a href="listaContato.html">Listar Contatos</a></li>
                     <li><a href="listaAgendamento.html">Listar Agendamentos</a></li>

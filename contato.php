@@ -15,29 +15,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	$msgErro = "";
 
-	$nome = $data = $sexo = $estadoCivil = $cargo = $especialidade = $cpf = $rg = $outro = "";
+	$nome = $emailContato = $msg = $motivo = "";
 
-	$nome             = filtraEntrada($_POST["nome"]);     
-	$data             = filtraEntrada($_POST["data"]);
-	$sexo             = filtraEntrada($_POST["sexo"]);
-    $estadoCivil      = filtraEntrada($_POST["estadoCivil"]);
-    $cargo            = filtraEntrada($_POST["cargo"]);
-    $especialidade    = filtraEntrada($_POST["especialidade"]);
-    $cpf              = filtraEntrada($_POST["cpf"]);
-    $rg               = filtraEntrada($_POST["rg"]);
-    $outro            = filtraEntrada($_POST["outro"]);
-
+	$nome         = filtraEntrada($_POST["nome"]);     
+	$emailContato = filtraEntrada($_POST["emailContato"]);
+	$msg          = filtraEntrada($_POST["msg"]);
+    $motivo       = filtraEntrada($_POST["motivo"]);
+   
 	try
 	{    
 		$conn = conectaAoMySQL();
 
 		$sql = "
-		  INSERT INTO Funcionario (id, nome, dataNascimento, sexo, estadoCivil, cargo, especialidade, cpf, rg, outro)
-		  VALUES (null, '$nome', $data, '$sexo', '$estadoCivil', '$cargo', '$especialidade', $cpf, $rg, '$outro')
+		  INSERT INTO Contato (id, nome, emailContato, msg, motivo)
+		  VALUES (null, '$nome', '$emailContato', '$msg', '$motivo')
 		";
 
 		if (! $conn->query($sql))
-		  throw new Exception("Falha na inserção dos dados: " . $conn->error);
+		  throw new Exception("Falha no envio: " . $conn->error);
 	}
 	catch (Exception $e)
 	{
@@ -107,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 <ul class="nav navbar-nav">
                     <li><a href="home.html">Home</a></li>
                     <li><a href="galeria.html">Galeria</a></li>
-                    <li class="active"><a href="contato.html">Contato</a></li>
+                    <li class="active"><a href="contato.php">Contato</a></li>
                     <li><a href="agendamento.html">Agendamento</a></li>
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#abrirModal" id="botaoModal">Entrar</button>
                 </ul>
@@ -117,25 +112,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
             <h1>Envie sua Mensagem</h1>
 
-                <form class="form">
+                <form class="form" name="formulario" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
                     <div class="form-group row">
                         <label for="nome">Nome:</label>
                         <div class="col-sm-4">
-                            <input class="form-control" type="text" id="nome" name="nome">
+                            <input class="form-control" type="text" id="nome" name="nome" required>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="email">Email:</label>
+                        <label for="emailContato">Email:</label>
                         <div class="col-sm-4">
-                            <input class="form-control" type="email" id="email" name="email">
+                            <input class="form-control" type="emailContato" id="emailContato" name="emailContato" required>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="msg">Mensagem:</label>
                         <div class="col-sm-8">
-                            <textarea class="form-control" id="msg" name="msg"></textarea>
+                            <textarea class="form-control" id="msg" name="msg" required></textarea>
                         </div>
                     </div>
 
@@ -155,6 +150,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 </form>
         </div>
     </div>
+
+    <?php 
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {  
+            if ($msgErro == "")
+                echo "<h3 class='text-success'>Mensagem Enviada com sucesso!</h3>";
+            else
+                echo "<h3 class='text-danger'>Não foi possível enviar a mensagem: $msgErro</h3>";
+        }
+    ?>
+
 </div>
 
 </body>
