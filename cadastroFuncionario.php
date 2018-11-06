@@ -13,9 +13,12 @@ function filtraEntrada($dado)
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
+    $formProcSucesso = false;
 	$msgErro = "";
 
-	$nome = $data = $sexo = $estadoCivil = $cargo = $especialidade = $cpf = $rg = $outro = "";
+    $id_funcionario = $nome = $data = $sexo = $estadoCivil = $cargo = $especialidade = $cpf = $rg = $outro = "";
+    $cep = $tipoLogradouro = $logradouro = $numero = $complemento = $bairro = $cidade = $estado = "";
+
 
 	$nome             = filtraEntrada($_POST["nome"]);     
 	$data             = filtraEntrada($_POST["data"]);
@@ -26,30 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $cpf              = filtraEntrada($_POST["cpf"]);
     $rg               = filtraEntrada($_POST["rg"]);
     $outro            = filtraEntrada($_POST["outro"]);
-
-	try
-	{    
-		$conn = conectaAoMySQL();
-
-		$sql = "
-		  INSERT INTO Funcionario (id, nome, dataNascimento, sexo, estadoCivil, cargo, especialidade, cpf, rg, outro)
-		  VALUES (null, '$nome', $data, '$sexo', '$estadoCivil', '$cargo', '$especialidade', $cpf, $rg, '$outro')
-		";
-
-		if (! $conn->query($sql))
-		  throw new Exception("Falha na inserção dos dados: " . $conn->error);
-	}
-	catch (Exception $e)
-	{
-		$msgErro = $e->getMessage();
-	}
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") 
-{
-	$msgErro = "";
-
-	$cep = $tipoLogradouro = $logradouro = $numero = $complemento = $bairro = $cidade = $estado = "";
 
 	$cep              = filtraEntrada($_POST["cep"]);     
 	$tipoLogradouro   = filtraEntrada($_POST["tipoLogradouro"]);
@@ -62,24 +41,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 	try
 	{    
-		$conn = conectaAoMySQL();
+        $conn = conectaAoMySQL();
+        
+        $conn->begin_transaction();
 
 		$sql = "
-		  INSERT INTO EnderecoFunc (id, cep, tipoLogradouro, logradouro, numero, complemento, bairro, cidade, estado)
-		  VALUES (null, $cep, '$tipoLogradouro', '$logradouro', $numero, '$complemento', '$bairro', '$cidade', '$estado')
-		";
-
+		  INSERT INTO Funcionario (id_funcionario, nome, dataNascimento, sexo, estadoCivil, cargo, especialidade, cpf, rg, outro)
+		  VALUES (NULL, '$nome', '$data', '$sexo', '$estadoCivil', '$cargo', '$especialidade', $cpf, $rg, '$outro')
+        ";
+        
 		if (! $conn->query($sql))
-		  throw new Exception("Falha na inserção dos dados: " . $conn->error);
-	}
+            throw new Exception("Falha na inserção dos dados do Funcionario: " . $conn->error);
+
+        // resgatar id do funcionario
+        $id_endfuncionario = mysqli_insert_id($conn);
+
+        $sql = "
+            INSERT INTO EnderecoFunc (id, cep, tipoLogradouro, logradouro, numero, complemento, bairro, cidade, estado)
+            VALUES ($id_endfuncionario, $cep, '$tipoLogradouro', '$logradouro', $numero, '$complemento', '$bairro', '$cidade', '$estado')
+        ";
+   
+		if (! $conn->query($sql))
+            throw new Exception("Falha na inserção dos dados do Endereço do Funcionario: " . $conn->error);
+
+        $conn->commit();
+        echo "Transacao executada com sucesso";
+        $formProcSucesso = true;
+
+    }
+
+    //caso tenha ocorrido algum erro operacao nao e completada 
 	catch (Exception $e)
 	{
-		$msgErro = $e->getMessage();
+        $conn->rollback();
+        echo "Ocorreu um erro na transacao: " . $e->getMessage();
 	}
 }
-  
-?>
 
+?>
 
 <!DOCTYPE html>
 
@@ -374,7 +373,7 @@ $(document).ready(function() {
 
         <?php 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {  
-                if ($msgErro == "")
+                if ($formProcSucesso == true)
                     echo "<h3 class='text-success'>Dados armazenados com sucesso!</h3>";
                 else
                     echo "<h3 class='text-danger'>Cadastro não realizado: $msgErro</h3>";

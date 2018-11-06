@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                     <li><a href="home.html">Home</a></li>
                     <li><a href="galeria.html">Galeria</a></li>
                     <li class="active"><a href="contato.php">Contato</a></li>
-                    <li><a href="agendamento.html">Agendamento</a></li>
+                    <li><a href="agendamento.php">Agendamento</a></li>
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#abrirModal" id="botaoModal">Entrar</button>
                 </ul>
             </div>

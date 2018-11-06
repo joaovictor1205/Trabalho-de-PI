@@ -1,3 +1,75 @@
+<?php
+
+function filtraEntrada($dado) 
+{
+ $dado = trim($dado);               // remove espaços no inicio e no final da string
+ $dado = stripslashes($dado);       // remove contra barras: "cobra d\'agua" vira "cobra d'agua"
+$dado = htmlspecialchars($dado);   // caracteres especiais do HTML (como < e >) são codificados
+  
+  return $dado;
+}
+
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+{
+	$formProcSucesso = false;
+	$msgErro = "";
+	
+  // Define e inicializa as variáveis
+  $codpaciente = $codAgendamento = $nomepaciente = $telefone= $data = $horario = "";
+  
+  
+  $nomepaciente					= filtraentrada($_POST["nomepaciente"]);
+  $telefone				= filtraentrada($_POST["telefone"]);
+  $data             	= filtraEntrada($_POST["data"]);     
+  $horario          	= filtraEntrada($_POST["horario"]);
+  
+
+  // Inclui o arquivo com os dados e funções de conexão
+  require "conexaoMysql.php";
+
+  try
+{
+	// Função definida no arquivo conexaoMysql.php
+    $conn = conectaAoMySQL();
+	
+ // inicio da transacao
+ $conn->begin_transaction();
+ 
+ $sql = "INSERT INTO `paciente` (`codpaciente`, `nome`, `telefone`) 
+			VALUES (NULL, '$nomepaciente', '$telefone')";
+    
+  echo $sql;	
+	
+ if (! $conn->query($sql))
+	throw new Exception('Erro ao inserir na tabela paciente');
+ 
+  //- Resgatando o identificador do paciente...
+ $id_paciente = mysqli_insert_id($conn);
+  
+ $sql = "INSERT INTO `agenda` (`codAgendamento`,`codpaciente`,`data`, `hora`)
+			values ( NULL,'$id_paciente','$data','$horario')";
+    	
+ if (! $conn->query($sql))
+	throw new Exception('Erro ao inserir na tabela agenda');
+ 
+   //se nenhuma excecao foi lancada, efetiva as operacoes
+ $conn->commit();
+ echo "Transacao executada com sucesso";
+ $formProcSucesso = true;
+}
+catch (Exception $e)
+{
+ // desfaz as operacoes caso algum erro tenha ocorrido (e uma exceção lançada)
+ $conn->rollback();
+ echo "Ocorreu um erro na transacao: " . $e->getMessage();
+}
+}
+?>
+
+
+
 <!DOCTYPE <!DOCTYPE html>
 
 <html>
