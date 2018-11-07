@@ -91,8 +91,8 @@ catch (Exception $e)
                     </div>
                     <ul class="nav navbar-nav">
                         <li><a href="cadastroFuncionario.php">Novo Funcionário</a></li>
-                        <li class="active"><a href="listaFuncionario.html">Listar Funcionários</a></li>
-                        <li><a href="listaContato.html">Listar Contatos</a></li>
+                        <li class="active"><a href="listaFuncionario.php">Listar Funcionários</a></li>
+                        <li><a href="listaContato.php">Listar Contatos</a></li>
                         <li><a href="listaAgendamento.html">Listar Agendamentos</a></li>
                         <a href="home.html"><button type="button" class="btn btn-default" id="voltar">Voltar</button></a>
 
