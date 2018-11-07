@@ -137,10 +137,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                     <div class="form-check">
                         <label class="form-check-label" for="motivo">Motivo:</label>
                         <div>
-                            <input class="form-check-input" type="radio" id="reclamacao" name="motivo">Reclamação
-                            <input class="form-check-input" type="radio" id="sugestao" name="motivo">Sugestão
-                            <input class="form-check-input" type="radio" id="elogio" name="motivo">Elogio
-                            <input class="form-check-input" type="radio" id="duvida" name="motivo">Dúvida
+                            <input class="form-check-input" type="radio" id="reclamacao" name="motivo" value="Reclamacao">Reclamação
+                            <input class="form-check-input" type="radio" id="sugestao" name="motivo" value="Sugestao">Sugestão
+                            <input class="form-check-input" type="radio" id="elogio" name="motivo" value="Elogio">Elogio
+                            <input class="form-check-input" type="radio" id="duvida" name="motivo" value="Sugestao">Dúvida
                         </div>
                     </div>
 

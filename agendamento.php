@@ -37,17 +37,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         echo $sql;
                 
         if (! $conn->query($sql))
-            throw new Exception('Erro ao inserir os dados');
+            throw new Exception("Erro ao inserir os dados" . $conn->error);
     
         $id_paciente = mysqli_insert_id($conn);
     
         $sql = "
-            INSERT INTO Agenda (codAgendamento, codPaciente, datadata, hora)
-            VALUES (NULL, $id_paciente, '$datadata', $hora) 
+            INSERT INTO Agenda (datadata, hora, nome,codAgendamento)
+            VALUES ('$datadata', $hora, '$nome', $id_paciente) 
         ";
             
         if (! $conn->query($sql))
-            throw new Exception('Erro ao inserir na tabela agenda');
+            throw new Exception('Erro ao inserir na tabela Agenda' . $conn->error);
     
         //se nenhuma excecao foi lancada, efetiva as operacoes
         $conn->commit();
@@ -217,7 +217,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 if ($formProcSucesso == true)
                     echo "<h3 class='text-success'>Agendamento realizado com sucesso!</h3>";
                 else
-                    echo "<h3 class='text-danger'>Agendamento não realizado $msgErro</h3>";
+                    echo "<h3 class='text-danger'>Agendamento não realizado: $msgErro</h3>";
             }
         ?>
 

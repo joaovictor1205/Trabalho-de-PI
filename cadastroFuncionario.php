@@ -57,8 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $id_endfuncionario = mysqli_insert_id($conn);
 
         $sql = "
-            INSERT INTO EnderecoFunc (id, cep, tipoLogradouro, logradouro, numero, complemento, bairro, cidade, estado)
-            VALUES ($id_endfuncionario, $cep, '$tipoLogradouro', '$logradouro', $numero, '$complemento', '$bairro', '$cidade', '$estado')
+            INSERT INTO EnderecoFunc (id, cep, tipoLogradouro, logradouro, numero, complemento, bairro, cidade, estado, nome)
+            VALUES ($id_endfuncionario, $cep, '$tipoLogradouro', '$logradouro', $numero, '$complemento', '$bairro', '$cidade', '$estado', '$nome')
         ";
    
 		if (! $conn->query($sql))
@@ -210,8 +210,8 @@ $(document).ready(function() {
                         <div class="form-check">
                             <label class="form-check-label col-sm-1" id="sexo" for="sexo">Sexo:</label>
                             <div>
-                                <input class="form-check-input" type="radio" id="masculino" name="sexo">Masculino
-                                <input class="form-check-input" type="radio" id="feminino" name="sexo">Feminino
+                                <input class="form-check-input" type="radio" id="masculino" name="sexo" value="Masculino">Masculino
+                                <input class="form-check-input" type="radio" id="feminino" name="sexo" value="Feminino">Feminino
                             </div>
                         </div><br>
 
